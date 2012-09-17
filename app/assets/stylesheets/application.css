@@ -1,0 +1,100 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    min-height: 600px;
+    min-width: 800px;
+    background:#ccdbce;
+}
+
+#header{
+    float: left;
+    width: 100%;
+    height: 75px;
+}
+
+#header a{
+    float: right;
+    padding-right: 10px;
+}
+
+#header h1 a{
+    float: left;
+    padding-left: 50%;
+}
+
+#main{
+    padding-top:75px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content {
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color:#ccdbce;
+    background-repeat: repeat;
+}
+
+.people {
+    background: #BCD2EE;
+    font-size: 17px;
+    border: 1px solid;
+    padding: 5px;
+    float: left;
+    width: 30%;
+    max-height: 762px;
+    min-height: 762px;
+    overflow:auto;
+    vertical-align: middle;
+}
+
+.content_center {
+    background: #BCD2EE;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    width: 65%;
+    float: left;
+}
+
+#messages {
+    background: white;
+    font-size: 13px;
+    border: 2px solid #000;
+    max-height: 600px;
+    min-height: 600px;
+    overflow:auto;
+}
+
+#message {
+    color: #000000;
+    margin: 5px;
+}
+
+#list strong {
+    padding: 2px;
+}
+
+#list_pm strong {
+    padding: 2px;
+}
+
+.online_user img, .online_user strong {
+    vertical-align: middle;
+}
+
+.personal {
+    float: left;
+    width: 35%;
+    font-size: 15px;
+}
+
+.all {
+    width: 64%;
+    font-size: 15px;
+    float: left;
+}
+
+#user_avatar {
+    margin-left: 0;
+}

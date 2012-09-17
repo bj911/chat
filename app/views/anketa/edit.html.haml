@@ -1,0 +1,22 @@
+%h3 #{@user.email}
+= form_for(@user, :url => anketum_path(@user), :html => { :method => "put", :multipart => true}) do |f|
+  -[:email, :name, :country, :city, :login, :icq, :skype, :mobile].each do |option|
+    %br
+    = f.label(option, :style => "width: 87px; display:inline-block;")
+    = f.text_field option, :size=> 24
+  %br
+  = "Date birthday"
+  = f.date_select(:birthday, {:order => [:day, :month, :year], :start_year => Date.current.year - 70, :end_year => Date.current.year - 13, :prompt => true})
+  %br
+  = f.label("Gender", :style => "width: 87px; display:inline-block;")
+  = f.select :gender, {t(:male) => "male", t(:female) => "female"}
+  %br
+    = f.label("Upload Image", :style => "width: 87px;")
+    = f.file_field :avatar, :name => "avatar[]", :multiple => true
+  %br
+    = f.submit "Update", disable_with: "Waiting..."
+%br
+  -@user.photos.each do |photo|
+    %a.gallery{:href => photo.image_url(:big), :rel => "group"}
+      = image_tag photo.image_url(:small)
+      = link_to image_tag("fancy_close.png"), anketum_path(:photo_id => photo.id), :method => :delete, :confirm => "Are you sure?"

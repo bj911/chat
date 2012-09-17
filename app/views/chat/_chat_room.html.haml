@@ -1,0 +1,7 @@
+#message
+  #list
+    -@histories.each do |history|
+      -if history.recive_id.blank? || history.recive_id == current_user.id || history.send_id == current_user.id
+        %strong{:style => "color: #{!history.recive_id.blank? ? "red" : "blue"}"} #{history.user.login} #{history.created_at}:
+        .text
+          != smiles(history.message.bbcode_to_html({}, false))

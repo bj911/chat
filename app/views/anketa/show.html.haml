@@ -1,0 +1,11 @@
+%h3 #{@user.email}
+= form_for(@user, :url => anketum_path(@user)) do |f|
+  = image_tag(@user.avatar_url(:thumb)) if @user.avatar?
+  -[:email, :name, :country, :city, :gender, :birthday, :login, :icq, :skype, :mobile].each do |option|
+    %br
+    = f.label(option, :style => "width: 80px; display:inline-block;")
+    = f.text_field option, :size => 20, :readonly=>"true"
+%br
+  -@user.photos.each do |photo|
+    %a.gallery{:href => photo.image_url(:big), :rel => "group"}
+      = image_tag photo.image_url(:small)

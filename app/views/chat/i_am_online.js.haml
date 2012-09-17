@@ -1,0 +1,2 @@
+- users = @users.inject([]) do |ret, user|
+  = render :partial => "chat/people", :locals => {:user => user}
