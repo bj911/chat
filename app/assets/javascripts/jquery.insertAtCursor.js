@@ -98,6 +98,11 @@ function Tt() {
     $('#messages').animate({scrollTop: '+=' + 10000 + 'px'});
 }
 
+function Clear() {
+    $('#history_message').val("");
+    $('#history_picture').val("");
+}
+
 function Personal_message(id,login){
     $("#history_recive_id").val(id);
     $(".personal label").html("Send "+login+":");

@@ -13,7 +13,7 @@
       = f.text_area :message, :style => "width: 99%; float: left; margin-bottom: 5px; max-width: 99%; min-width: 99%; max-height: 100px;"
 
       #bbcBox_message{:style => "display: block; float: left;"}
-        -['b','i','u','s','img','email'].each_with_index do |pict, i|
+        -['b','i','u','img','email'].each_with_index do |pict, i|
           %div{:style => "float: left;", :id => "BBCBox_message_button_#{i+1}"}
             =image_tag("icon/#{pict}.gif", :onclick => "addTag($('textarea'), '#{pict}'); return false;")
         %div{:style => "float: left;", :id => "BBCBox_message_button_7"}
@@ -21,10 +21,11 @@
         %div{:style => "float: left;"}
           -{"smiley" => '":-)"',"wink" => '";-)"', "sad" => '":-("', "grin" => '";-D"', "angry" => '"!:("', "cheesy" => '":-D"'}.each do |key, value|
             =image_tag("/assets/post/#{key}.gif", :alt => key, :onclick => "addSmileTag($('textarea'), '#{value}'); return false;")
-        = select( "payment", "id", {"Font size" => 0, "8pt" => 8, "10pt" => 10, "12pt" => 12, "14pt" => 14, "18pt" => 18, "24pt" => 24, "36pt" => 36}, {}, :style => "width: 100px; margin-left: 10px;", :onchange => "addSizeTag($('textarea'), $(this).val());")
-        = select( "size", "id", {"Change Color" => "white","Black" => "Black", "Red" => "red", "Green" => "green", "Yellow" => "yellow", "Blue" => "blue", "Pink" => "pink", "Orange" => "orange", "Brown" => "brown"}, {}, :style => "width: 130px; margin-left: 5px;", :onchange => "addColorTag($('textarea'), $(this).val());")
+        = select( "payment", "id", {"Font size" => 0, "8pt" => 8, "10pt" => 10, "12pt" => 12, "14pt" => 14, "18pt" => 18, "24pt" => 24, "36pt" => 36}, {}, :style => "width: 90px; margin-left: 10px;", :onchange => "addSizeTag($('textarea'), $(this).val());")
+        = select( "size", "id", {"Change Color" => "white","Black" => "Black", "Red" => "red", "Green" => "green", "Yellow" => "yellow", "Blue" => "blue", "Pink" => "pink", "Orange" => "orange", "Brown" => "brown"}, {}, :style => "width: 120px; margin-left: 5px;", :onchange => "addColorTag($('textarea'), $(this).val());")
         = f.file_field :picture,:multiple => true
-      = f.submit "Send", disable_with: "Waiting...", :style => "width: 90px; height: 25px; float: right;", :onclick => "Tt();"
+      = f.submit "Send", disable_with: "Waiting...", :style => "width: 70px; height: 25px; float: right;", :onclick => "Tt();"
+      = button_tag "Clear", disable_with: "Waiting...", :style => "width: 70px; height: 25px; float: right;", :onclick => "Clear(); return false;"
       = f.hidden_field :recive_id
       %br
   .people

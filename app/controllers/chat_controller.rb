@@ -1,5 +1,19 @@
 class ChatController < ApplicationController
   before_filter "load"
+  helper_method :sanitize_options
+
+  def sanitize_options
+    { :tags => %w(img table tr td br ul ul li a strong b u s i hr em p div sub sup span h1 h2 h3 h4 h5 h6), :attributes => %w(class style data type value href height width name src colspan rowspan align rel) }
+  end
+
+  def help
+    Helper.instance
+  end
+
+  class Helper
+    include Singleton
+    include ActionView::Helpers::SanitizeHelper
+  end
 
   def index
     @user.update_attribute(:online, true)
@@ -9,7 +23,7 @@ class ChatController < ApplicationController
 
   def create
     @users = User.all(:order => "login ASC")
-    @history = History.create(params[:history].merge({:send_id => @user.id, :message => "<a>"+smiles(params['history']['message'].bbcode_to_html({}, false))+"</a>"}))
+    @history = History.create(params[:history].merge({:send_id => @user.id, :message => help.sanitize("<a>"+smiles(params['history']['message'].bbcode_to_html({}, false))+"</a>", sanitize_options)}))
     gallery = ""
     unless params['history']['picture'].blank?
       params['history']['picture'].each do |pict|
