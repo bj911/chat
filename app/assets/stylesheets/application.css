@@ -71,14 +71,6 @@ html,body {
     margin: 5px;
 }
 
-#list strong {
-    padding: 2px;
-}
-
-#list_pm strong {
-    padding: 2px;
-}
-
 .online_user img, .online_user strong {
     vertical-align: middle;
 }

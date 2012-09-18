@@ -23,7 +23,7 @@ class ChatController < ApplicationController
 
   def create
     @users = User.all(:order => "login ASC")
-    @history = History.create(params[:history].merge({:send_id => @user.id, :message => help.sanitize("<a>"+smiles(params['history']['message'].bbcode_to_html({}, false))+"</a>", sanitize_options)}))
+    @history = History.create(params[:history].merge({:send_id => @user.id, :message => help.sanitize("<a>"+smiles(params['history']['message'])+"</a>", sanitize_options)}))
     gallery = ""
     unless params['history']['picture'].blank?
       params['history']['picture'].each do |pict|
